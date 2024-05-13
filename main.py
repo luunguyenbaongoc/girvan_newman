@@ -1,9 +1,10 @@
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
+import time
 
 from read_data import convert_to_graph, read_dimacs
-
+start_time = time.time()
 # load dataset from read_data.py
 G = convert_to_graph(read_dimacs())
 
@@ -45,7 +46,7 @@ def visualize_communities(graph, communities, i):
     nx.draw_networkx_nodes(
         graph,
         pos=pos,
-        node_size=40,
+        node_size=100,
         node_color=node_colors,
         # with_labels=True,
         # font_size=20,
@@ -67,4 +68,5 @@ visualize_communities(G, communities[3], 2)
 #     color="#F2D140",
 #     title="Modularity Trend for Girvan-Newman Community Detection",
 # )
+print("--- %s seconds ---" % (time.time() - start_time))
 plt.show()
